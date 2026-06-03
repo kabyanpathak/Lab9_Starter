@@ -12,6 +12,26 @@ window.onerror = function(message, source, lineno, colno, error) {
     return false;
 };
 
+function deepest() {
+    console.trace();
+}
+
+function deeper() {
+    deepest();
+}
+
+function deep() {
+    deer();
+}
+
+function deer() {
+    deeper();
+}
+
+function handleBtnClick() {
+    deep();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('form');
     const output = document.querySelector('output');
@@ -61,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             switch (action) {
                 case 'Console Log':
-                    console.log('Log statement.');
+                    console.log('Log statement Demo.');
                     break;
 
                 case 'Console Error':
@@ -69,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     break;
 
                 case 'Console Count':
-                    console.count('Clicks');
+                    console.count('Count Button');
                     break;
 
                 case 'Console Warn':
@@ -77,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     break;
 
                 case 'Console Assert':
-                    console.assert(1 === 2, 'Assertion failed.');
+                    console.assert(1 === 2, 'Assertion failed: the numbers don\'t match.');
                     break;
 
                 case 'Console Clear':
@@ -94,8 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 case 'Console Group Start':
                     console.group('Group');
-                    console.log('Item 1');
-                    console.log('Item 2');
                     break;
 
                 case 'Console Group End':
@@ -104,25 +122,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 case 'Console Table':
                     console.table([
-                        { item: 'A', status: 'OK' },
-                        { item: 'B', status: 'OK' }
+                        { name: 'Software Engineering', num: 110 },
+                        { name: 'Programming Languages', num: 130 },
+                        { name: 'Advanced Software Engineering', num: 112 }
                     ]);
                     break;
 
                 case 'Start Timer':
-                    console.time('Timer');
+                    console.time('Timer Button');
                     break;
 
                 case 'End Timer':
-                    console.timeEnd('Timer');
+                    console.timeEnd('Timer Button');
                     break;
 
                 case 'Console Trace':
-                    (function traceA() {
-                        (function traceB() {
-                            console.trace('Trace');
-                        })();
-                    })();
+                    handleBtnClick();
                     break;
 
                 case 'Trigger a Global Error':
